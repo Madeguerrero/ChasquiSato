@@ -1,0 +1,379 @@
+
+/* Aquí se especifica la fuenta que usa la app */
+
+body {
+    font: href='https://fonts.googleapis.com/css?family=Inika';
+    font-family: 'Inika';
+}
+
+
+/* Los siguientes ajustes son para cambiar de un header blanco
+a un header negro. Tuve que hacer varios cambios para que todo
+el texto y los botones se cambiaran a blanco */
+
+.navbar {
+background-color: black;
+}
+
+.nav-link, .nav-link:hover {
+    color: white;
+}
+
+.dropdown, .dropdown-menu {
+    color: white;
+}
+
+.nav-link.dropdown-toggle.show {
+    color: white;
+}
+
+.navbar-brand, .navbar-brand:hover {
+    font-family: 'Sergio', sans-serif;
+    color: white;
+}
+
+.hrBlanco {
+    color: white;
+}
+
+.navbar-toggler {
+    border-color: white;
+}
+
+
+/* Para que cuando un usuario mueve el cursor sobre un enlace en el
+Navbar, se subraye. */
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+
+/* El logotipo "Chasquisato" está creado con la fuente "Sergio Trendy"
+y las dos partes del logotipo está controladas con CSS. Para que
+se vea bien en pantallas pequeñas y móviles, tuve que hacerlo más
+pequeño en pantallas pequeñas usando @media */
+
+@font-face {
+    font-family: 'Sergio';
+    src: url('../fonts/Sergio_Trendy.ttf') format('truetype');
+  }
+
+.logo-top {
+    font-size: 2rem;
+}
+
+.logo-bottom {
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+@media screen and (max-width: 768px) {
+    .logo-top {
+        font-size: 1rem;
+    }
+    
+    .logo-bottom {
+        font-size: 0.4rem;
+        font-weight: normal;
+    }
+}
+
+
+/* También fue necesario reducir el tamaño de la fuente
+en pantallas pequeñas usando @media  */
+
+@media screen and (min-width: 768px) {
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Varias páginas tienen secciones que alternan entre
+un fondo negro y un fondo blanco */
+
+.fondoNegro {
+    background-color: black;
+    padding: 25px;
+    color: white;
+}
+
+.fondoBlanco {
+    background-color: white;
+    padding: 25px;
+}
+
+
+/* Aquí doy padding alrededor de los elementos <h3> y <p>
+y un margen alrededor de los divs con className "container"
+para que los elementos en las páginas se vean bien */
+
+h3 {
+    padding: 10px;
+}
+
+p {
+    padding: 10px;
+}
+
+.container {
+    margin: 25px auto 0 auto;
+}
+
+
+/* En varias páginas era necesario centralizar un botón */
+
+.center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* Controlo la imagen grande en la cabecera de cada página y
+el texto que está superimpuesto en ella con la
+siguiente CSS. Tuve que añadir el "text-shadow" para que 
+fuera más fácil de leer el texto encima de la imagen.
+Para que el tamaño del texto cambia de acuerdo con la página
+usé "vw". El único problema con esto es que en pantallas
+pequeñas se resultó díficil de ver el texto por lo cual usé
+@media para hacer el texto más grande en pantallas pequeñas. */
+
+.fondoImg {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.fondoImg img {
+    width: 100%;
+    height: auto;
+}
+
+.textoSobreImg {
+  position: absolute;
+  top: 25%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  text-shadow: 2px 2px black;
+  color: white; 
+  /* padding: 10px 10px; */
+  font-size: 4.5vw;
+  text-align: center;
+}
+
+.textoSobreImgSmall {
+    width: 75%;
+    position: absolute;
+    top: 33%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    text-shadow: 2px 2px black;
+    color: white; 
+    font-size: 2.5vw;
+    text-align: center;
+  }
+
+@media screen and (max-width: 768px) {
+    .textoSobreImg {
+        width: 85%;
+        font-size: 5.5vw;
+        text-shadow: 1px 1px black;
+      }
+      
+    .textoSobreImgSmall {
+        width: 85%;
+        font-size: 5.5vw;
+        font-size: 3vw;
+        text-shadow: 1px 1px black;
+      }
+}
+
+
+/* En la página de 'Menú' uso la misma técnica para el
+texto y también con un botón. */
+
+  .textoSobreImgFooter {
+    position: absolute;
+    top: 40%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    text-shadow: 2px 2px black;
+    color: white; 
+    /* padding: 10px 10px; */
+    font-size: 2.5vw;
+    text-align: center;
+  }
+
+.botonSobreImg {
+    position: absolute;
+    top: 75%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    text-shadow: 2px 2px black;
+    color: white; 
+    /* padding: 10px 10px; */
+    font-size: 1.8vw;
+    text-align: center;
+  }
+
+
+/* Uso la misma técnica para la caja de "Login" porque
+está superimpuesta en la imagen de fondo. Para que se
+vea bien en pantallas pequeñas, fue necesario hacer unos
+ajuste usando @media. */
+
+.loginBox {
+    position: absolute;
+    top: 30%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    color: black; 
+    width: 80%;
+    max-width: 400px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .loginBox {
+        top: 50%;
+    }
+}
+
+.loginTitle {
+    color: white; 
+    text-shadow: 2px 2px black;
+    padding: 10px 20px;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+.loginForm {
+    background: rgba(220, 220, 220, .8);
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+    padding: 20px 20px;
+  }
+
+.loginForm input {
+    width: 100%;
+  }
+
+
+/* El ícono del ojito (para mostrar/esconder la contraseña)
+estuve en blanco y lo tuve que cambiar a negro. También
+cuando lo posicioné dentro del campo de 'Input' tuve que
+especificar que el cursor sea un pointer. */
+
+.escondePass {
+    cursor: pointer;
+  }
+
+.escondePass path {
+    fill: black;
+  }
+
+
+/* Para que las etiquetas del formulario en la página de
+'Contacto' aparezcan al lado izquierdo. */
+
+.form-label {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1em;
+}
+
+
+/* Estos dos estilos son para la página que muestra 'Mis reservas'. 
+El primero es para que los botones de 'Editar' y 'Cancelar'
+ocupen 80% de su <div> para que los dos sean del mismo ancho.
+El segundo es para controlar el espacio debajo de cada línea de texto. */
+
+.btn-fill {
+    display: block;
+    width: 80%;
+}
+
+.card-text {
+    margin-bottom: 0px;
+}
+
+
+/* Para que las imagenes tengan esquinas redondeadas. */
+
+.roundBorder {
+    border-radius: 5%;
+}
+
+
+/* Estos estilos usé principalmente en la página del
+menú para que diferentes elementos (por ejemplo, el
+nombre de un plato vs. el precio) tengan estilos
+distintos. */
+
+.menuDescripcion {
+    font-size: 0.9em;
+}
+
+.menuPrecio {
+    color: silver;
+    font-size: 0.8em;
+}
+
+.dashedLine {
+    border-style: dashed;
+    margin: 12px;
+}
+
+
+/* Para que haya espacio entre la última sección y el footer. */
+
+.container {
+    margin-bottom: 40px;
+}
+
+
+/* Los íconos de Twitter, Facebook y Instagram en el footer
+estaban negros y tuve que cambiarlos a blanco. Resulta que 
+no lo pude hacer con 'color' porque son archivos SVG, y descubrí
+que se puede cambiar usando path y fill. */
+
+path {
+    fill: white;
+}
+
+
+/* En el dropdown menú del Navbar, el enlace de 'Cerrar sesión'
+no tiene un 'href', sino llama a una función (para abrir un 
+modal). Por lo tanto no tiene un pointer cuando el usuario
+mueve el cursor sobre él.  */
+
+.dropdown-item:hover {
+    cursor: pointer;
+}
+
+
+/* Para ajustar el estilo de un <h3> en la página 'Inicio'. */
+
+.boldHeading {
+    font-weight: bold;
+}
+
+
+/* Para centralizar los <figcaption> en la página de 'Nosotros'. */
+
+figcaption {
+    text-align: center;
+}
+
+
+/* Para que las imagenes en varias páginas tengan un margen entre 
+ellos en pantallas de diferentes tamaños fue necesario añadir
+este estilo. */
+
+.colImg {
+    margin: 10px 0px 35px 0px;
+}
+
+/* –––––––––––––––––– */
