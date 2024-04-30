@@ -18,7 +18,7 @@ const db = mysql.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   // database: "chasquisato",
-  database: "sql8701413"
+  database: "sql11703140"
 })
 
 // Aquí es donde intenta la conexión a la base de datos,
