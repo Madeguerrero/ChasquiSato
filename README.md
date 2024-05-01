@@ -26,8 +26,8 @@ El objetivo principal de este proyecto es crear un registro e inicio de sesión 
   _frameworks_ o librerías de CSS y JS.
 
 * _Login_ con Mysql:
- - Para el _login_ y las reservas en la página web se utilizó [FreeSQLdatabase](https://www.freesqldatabase.com/)
- - Creación de cuenta de acceso y autenticación con cuenta de correo y
+  - Para el _login_ y las reservas en la página web se utilizó [FreeSQLdatabase](https://www.freesqldatabase.com/)
+  - Creación de cuenta de acceso y autenticación con cuenta de correo y
     contraseña.
 * Validaciones:
   - Solamente se permite el acceso a usuarios con cuentas válidas.
