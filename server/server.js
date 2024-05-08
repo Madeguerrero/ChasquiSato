@@ -45,6 +45,7 @@ try {
 
 app.post("/login", (req, res) => {
   const { email, contrasena } = req.body;
+  const results = [];
   db.query(
     "SELECT * FROM clientes WHERE email= ? AND contraseña= ?",
     [email, contrasena],
