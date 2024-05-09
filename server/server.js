@@ -34,6 +34,14 @@ try {
 }
 
 
+/// *** PARA ESCUCHAR LAS SOLICITUDES EN EL PUERTO ESPECIFICADO *** ///
+
+app.listen(process.env.PORT, () => {
+  console.log("Conectado correctamente");
+});
+
+
+
 /// *** PARA HACER EL LOGIN A LA BASE DE DATOS *** ///
 
 // Al iniciar una sesión, el usuario tiene que ingresar su email
@@ -268,10 +276,5 @@ app.delete("/reservas/:id_reservas", (req, res) => {
 })
 
 
-/// *** PARA ESCUCHAR LAS SOLICITUDES EN EL PUERTO ESPECIFICADO *** ///
-
-app.listen(process.env.PORT, () => {
-  console.log("Conectado correctamente");
-});
 
 
