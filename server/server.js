@@ -34,14 +34,6 @@ try {
 }
 
 
-/// *** PARA ESCUCHAR LAS SOLICITUDES EN EL PUERTO ESPECIFICADO *** ///
-
-app.listen(process.env.PORT, () => {
-  console.log("Conectado correctamente");
-});
-
-
-
 /// *** PARA HACER EL LOGIN A LA BASE DE DATOS *** ///
 
 // Al iniciar una sesión, el usuario tiene que ingresar su email
@@ -53,7 +45,6 @@ app.listen(process.env.PORT, () => {
 
 app.post("/login", (req, res) => {
   const { email, contrasena } = req.body;
-  const result = [];
   db.query(
     "SELECT * FROM clientes WHERE email= ? AND contraseña= ?",
     [email, contrasena],
@@ -274,6 +265,14 @@ app.delete("/reservas/:id_reservas", (req, res) => {
     return res.json(data);
   })
 })
+
+
+/// *** PARA ESCUCHAR LAS SOLICITUDES EN EL PUERTO ESPECIFICADO *** ///
+
+app.listen(process.env.PORT, () => {
+  console.log("Conectado correctamente");
+});
+
 
 
 
