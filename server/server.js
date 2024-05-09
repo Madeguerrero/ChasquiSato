@@ -49,7 +49,7 @@ app.post("/login", (req, res) => {
     "SELECT * FROM clientes WHERE email= ? AND contraseña= ?",
     [email, contrasena],
     (err, result) => {
-      if (result.length > 0) {
+      if (result && result.length > 0) {
       res.json({ status: "success" });
       } else {
         res.json({ status: "failed" });
