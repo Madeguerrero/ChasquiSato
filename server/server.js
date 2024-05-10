@@ -43,20 +43,34 @@ try {
 // con estos datos. Si hay (o sea, si 'result.length' es mayor que 0)
 // nos da el estado "success" y permite iniciar una sesión.
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, contrasena } = req.body;
-  db.query(
-    "SELECT * FROM clientes WHERE email= ? AND contraseña= ?",
-    [email, contrasena],
-    (err, results) => {
-      if (results.length > 0) { 
+  
+  try {
+    const results = await new Promise((resolve, reject) => {
+      db.query(
+        "SELECT * FROM clientes WHERE email= ? AND contraseña= ?",
+        [email, contrasena],
+        (err, results) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(results);
+          }
+        }
+      );
+    });
+
+    if (results.length > 0) {
       res.json({ status: "success" });
-      } else {
-        res.json({ status: "failed" });
-      }
+    } else {
+      res.json({ status: "failed" });
     }
-  );
-})
+  } catch (error) {
+    console.error("Error querying database:", error);
+    res.json({ status: "error" });
+  }
+});
 
 
 /// *** PARA MOSTRAR LOS DETALLES DEL CLIENTE LOGEADO *** ///
