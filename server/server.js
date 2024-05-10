@@ -13,7 +13,8 @@ app.use(express.json())
 /// *** PARA CONECTARSE A LA BASE DE DATOS *** ///
 
 require("dotenv").config();
-const db = mysql.createConnection({
+const db = mysql.createPool({
+  connectionLimit: 10,
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -24,14 +25,23 @@ const db = mysql.createConnection({
 // Aquí es donde intenta la conexión a la base de datos,
 // y produce un mensaje para decir si se conectó o no
 
-try {
-  db.connect();
-  console.log("Conectado con éxito a la base de datos");
-} catch (error) {
-  console.error(
-    "Error al conectar con la base de datos del server SQL: " + error
-  );
-}
+//try {
+//  db.connect();
+//  console.log("Conectado con éxito a la base de datos");
+//} catch (error) {
+//  console.error(
+//    "Error al conectar con la base de datos del server SQL: " + error
+//  );
+//}
+
+db.getConnection((err, connection) => {
+  if (err) {
+    console.error("Error al conectar con la base de datos:", err);
+  } else {
+    console.log("Conectado con éxito a la base de datos");
+    connection.release();
+  }
+});
 
 
 /// *** PARA HACER EL LOGIN A LA BASE DE DATOS *** ///
@@ -43,7 +53,7 @@ try {
 // con estos datos. Si hay (o sea, si 'result.length' es mayor que 0)
 // nos da el estado "success" y permite iniciar una sesión.
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, contrasena } = req.body;
   db.query(
     "SELECT * FROM clientes WHERE email= ? AND contraseña= ?",
