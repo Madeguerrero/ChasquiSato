@@ -24,15 +24,12 @@ const db = mysql.createConnection({
 // Aquí es donde intenta la conexión a la base de datos,
 // y produce un mensaje para decir si se conectó o no
 
-try {
-  db.connect();
+  db.connect((err) => {
+    if (err) {
+      console.error("Error al conectar a la base de datos:", err);
+      return;
+    }
   console.log("Conectado con éxito a la base de datos");
-} catch (error) {
-  console.error(
-    "Error al conectar con la base de datos del server SQL: " + error
-  );
-}
-
 
 /// *** PARA HACER EL LOGIN A LA BASE DE DATOS *** ///
 
@@ -49,14 +46,19 @@ app.post("/login", (req, res) => {
     "SELECT * FROM clientes WHERE email= ? AND contraseña= ?",
     [email, contrasena],
     (err, results) => {
-      if (results.length > 0) { 
+      if (err) {
+        console.error("Error al consultar la base de datos:", err);
+        return res.json({ status: "error"});
+      }
+      if (results && results.length > 0) { 
       res.json({ status: "success" });
       } else {
         res.json({ status: "failed" });
       }
     }
   );
-})
+});
+  });
 
 
 /// *** PARA MOSTRAR LOS DETALLES DEL CLIENTE LOGEADO *** ///
